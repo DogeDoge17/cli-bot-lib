@@ -1,0 +1,3 @@
+[submodule "bots/rise_quotes"]
+	path = bots/rise_quotes
+	url = https://github.com/DogeDoge17/rise_quotes.git
