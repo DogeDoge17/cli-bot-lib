@@ -56,7 +56,7 @@ namespace cli_bot
                 ClearLine();
                 CoutL($"Next Tweet - {endTime.TimeOfDay.Hours:D2}:{endTime.TimeOfDay.Minutes:D2}:{endTime.TimeOfDay.Seconds:D2}");
                 ClearLine();
-                CoutL($"[{new string('#', (int)(bot.Progress*10)+1)}{new string(' ', (int)((1 - bot.Progress) * 10))}] {bot.Progress*100}% - {essentiallyACrashout.Minutes:D2}:{essentiallyACrashout.Seconds:D2}");
+                CoutL($"[{new string('#', (int)(bot.Progress*20))}{new string(' ', (int)((1 - bot.Progress) * 20))}] {bot.Progress*100}% - {essentiallyACrashout.Minutes:D2}:{essentiallyACrashout.Seconds:D2}");
             }
 
             CoutL("\n\n-------------------------------------");

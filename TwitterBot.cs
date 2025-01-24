@@ -19,7 +19,7 @@ public class TwitterBot
     public int timeout = 250;
 
 
-    public float Progress { get { return (float)(interval / timer ); } }
+    public float Progress { get { return (float)(interval / timer )-1; } }
 
     public string DisplayName { get; set; }
 
