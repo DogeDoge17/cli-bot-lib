@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>cli_bot</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bots\rise_quotes\**" />
+    <EmbeddedResource Remove="bots\rise_quotes\**" />
+    <None Remove="bots\rise_quotes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Quill.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Quill">
+      <HintPath>Quill.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>
