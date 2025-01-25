@@ -19,7 +19,7 @@ public class TwitterBot
     public int timeout = 250;
 
 
-    public float Progress { get { return (float)(interval / timer )-1; } }
+    public float Progress { get { return 1-(float)(timer / interval ); } }
 
     public string DisplayName { get; set; }
 
@@ -57,7 +57,7 @@ public class TwitterBot
             return;
         }
 
-        DriverCreation.SetBrowserType(BrowserType.Firefox);
+        DriverCreation.SetBrowserType(BrowserType.Firefox);        
         DriverCreation.SuppressInitialDiagnosticInformation = true;
         DriverCreation.logLevel = LogLevel.None;
         client = new();

@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="bots\rise_quotes\**" />
-    <EmbeddedResource Remove="bots\rise_quotes\**" />
-    <None Remove="bots\rise_quotes\**" />
+    <Compile Remove="bots\**" />
+    <EmbeddedResource Remove="bots\**" />
+    <None Remove="bots\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
   </ItemGroup>
 
   <ItemGroup>
