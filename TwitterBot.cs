@@ -1,16 +1,15 @@
 ﻿using Quill;
 using Quill.Pages;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.Tracing;
-using System.Drawing;
 
 namespace cli_bot;
 
 public class TwitterBot
 {
     public delegate void RunBot(ComposePage composer, string[] args);
+    public delegate void PreRun(string[] args);
 
     public event RunBot runAction;
+    public event PreRun preAction;
 
     public double timer;
 
@@ -18,10 +17,11 @@ public class TwitterBot
 
     public int timeout = 250;
 
-
-    public float Progress { get { return 1-(float)(timer / interval ); } }
+    public float Progress { get { return 1 - (float)(timer / interval); } }
 
     public string DisplayName { get; set; }
+
+    public bool CustomTimer { get; set; }
 
     private ComposePage _page;
     public TwitterClient client;
@@ -39,25 +39,25 @@ public class TwitterBot
     public TwitterBot(double intervalS)
     {
         interval = intervalS;
-        //timer = intervalS;
     }
 
     public void Start(string[]? argv = null)
     {
+        Console.Clear();
         long lastTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         _loginStart = DateTimeOffset.UtcNow.LocalDateTime;
         double deltaTime = 0.0f;
 
         string[] creds = null;
         if (File.Exists(Path.Assembly / "login.txt"))
-           creds = File.ReadAllLines(Path.Assembly / "login.txt").Select(str => str.Trim()).ToArray();
+            creds = File.ReadAllLines(Path.Assembly / "login.txt").Select(str => str.Trim()).ToArray();
         else
         {
-            Console.WriteLine("Please create and fill out a login file.");            
+            Console.WriteLine("Please create and fill out a login file.");
             return;
         }
 
-        DriverCreation.SetBrowserType(BrowserType.Firefox);        
+        DriverCreation.SetBrowserType(BrowserType.Firefox);
         DriverCreation.SuppressInitialDiagnosticInformation = true;
         DriverCreation.logLevel = LogLevel.None;
         client = new();
@@ -87,21 +87,34 @@ public class TwitterBot
 
             if (_loginState < 3)
                 goto end;
-            
+
 
             timer -= deltaTime;
-
-            //Network.FullReport(this);            
 
             if (timer <= 0)
             {
 
+                try
+                {
+                    //purposefully not multithreaded as preactions should be efficient 
+                    if (preAction != null)
+                        preAction.Invoke(argv);
+                }
+                catch (Exception e)
+                {
+                    Output.WriteLine(e.ToString());
+                }
+
                 ThreadStart runThreadStart = new ThreadStart(() =>
                 {
-                    try{
-                        runAction.Invoke(_page, new string[] { });
-                        Console.Clear();                    
-                    }catch(Exception e){
+                    try
+                    {
+                        if (runAction != null)
+                            runAction.Invoke(_page, argv);
+                        Console.Clear();
+                    }
+                    catch (Exception e)
+                    {
                         Output.WriteLine(e.ToString());
                     }
                 });
@@ -109,15 +122,20 @@ public class TwitterBot
                 _runThread = new Thread(runThreadStart) { IsBackground = true, Name = DisplayName + " login" };
                 _runThread.Start();
 
-                timer = interval;
-                
-                //Network.WriteLine("hi dadd");
+                if (!CustomTimer)
+                    SetTimer(TimeSpan.FromSeconds(interval));
             }
 
         end:
             ticks++;
             Output.Draw(this);
-            Thread.Sleep(timeout);                   
+            Thread.Sleep(timeout);
         }
+    }
+
+    public void SetTimer(TimeSpan interval)
+    {
+        this.interval = interval.TotalSeconds;
+        timer = this.interval;
     }
 }

@@ -12,6 +12,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hourlynatsuki", "bots\hourl
 		{D330C0A9-46D0-41D5-88F6-25D4AC5DF56E} = {D330C0A9-46D0-41D5-88F6-25D4AC5DF56E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "adachireaction", "bots\adachireaction\adachireaction.csproj", "{99C2AC4E-4238-4D82-89F8-A34D5A0B677C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D330C0A9-46D0-41D5-88F6-25D4AC5DF56E} = {D330C0A9-46D0-41D5-88F6-25D4AC5DF56E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blackballs", "bots\blackballs\blackballs.csproj", "{C157BCCF-AADE-42B1-AFE9-480A334E678C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D330C0A9-46D0-41D5-88F6-25D4AC5DF56E} = {D330C0A9-46D0-41D5-88F6-25D4AC5DF56E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +40,14 @@ Global
 		{0A2BE23A-8FD9-4C20-9486-2D0193A56D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A2BE23A-8FD9-4C20-9486-2D0193A56D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A2BE23A-8FD9-4C20-9486-2D0193A56D19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C2AC4E-4238-4D82-89F8-A34D5A0B677C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C2AC4E-4238-4D82-89F8-A34D5A0B677C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C2AC4E-4238-4D82-89F8-A34D5A0B677C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C2AC4E-4238-4D82-89F8-A34D5A0B677C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C157BCCF-AADE-42B1-AFE9-480A334E678C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C157BCCF-AADE-42B1-AFE9-480A334E678C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C157BCCF-AADE-42B1-AFE9-480A334E678C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C157BCCF-AADE-42B1-AFE9-480A334E678C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
