@@ -4,3 +4,6 @@
 [submodule "bots/hourlynatsuki"]
 	path = bots/hourlynatsuki
 	url = https://github.com/DogeDoge17/hourlynatsuki.git
+[submodule "bots/adachireaction"]
+	path = bots/adachireaction
+	url = git@github.com:https://github.com/DogeDoge17/adachireaction.git
