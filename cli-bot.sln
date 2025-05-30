@@ -22,6 +22,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blackballs", "bots\blackbal
 		{D330C0A9-46D0-41D5-88F6-25D4AC5DF56E} = {D330C0A9-46D0-41D5-88F6-25D4AC5DF56E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "joaquin", "bots\joaquin\joaquin.csproj", "{E0EBB3B8-A2C9-5495-A745-6AFDDAC2FB58}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D330C0A9-46D0-41D5-88F6-25D4AC5DF56E} = {D330C0A9-46D0-41D5-88F6-25D4AC5DF56E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nino", "bots\nino\nino.csproj", "{CF5FC3FF-DD70-7404-6DFF-A1690D151E56}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D330C0A9-46D0-41D5-88F6-25D4AC5DF56E} = {D330C0A9-46D0-41D5-88F6-25D4AC5DF56E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,8 +58,19 @@ Global
 		{C157BCCF-AADE-42B1-AFE9-480A334E678C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C157BCCF-AADE-42B1-AFE9-480A334E678C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C157BCCF-AADE-42B1-AFE9-480A334E678C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0EBB3B8-A2C9-5495-A745-6AFDDAC2FB58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0EBB3B8-A2C9-5495-A745-6AFDDAC2FB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0EBB3B8-A2C9-5495-A745-6AFDDAC2FB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0EBB3B8-A2C9-5495-A745-6AFDDAC2FB58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5FC3FF-DD70-7404-6DFF-A1690D151E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5FC3FF-DD70-7404-6DFF-A1690D151E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5FC3FF-DD70-7404-6DFF-A1690D151E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5FC3FF-DD70-7404-6DFF-A1690D151E56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48D37C7B-7707-4D71-AF95-15C4CB315BF0}
 	EndGlobalSection
 EndGlobal

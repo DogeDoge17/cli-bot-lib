@@ -36,10 +36,9 @@ public class TwitterBot
 
     public TwitterBot(TimeSpan interval) : this(interval.TotalSeconds) { }
 
-    public TwitterBot(double intervalS)
-    {
-        interval = intervalS;
-    }
+    public TwitterBot(double intervalS) => interval = intervalS;
+
+    public void ShutDown() => client.Close();
 
     public void Start(string[]? argv = null)
     {
@@ -57,7 +56,7 @@ public class TwitterBot
             return;
         }
 
-        DriverCreation.SetBrowserType(BrowserType.Firefox);
+        // DriverCreation.SetBrowserType(BrowserType.Firefox);
         DriverCreation.SuppressInitialDiagnosticInformation = true;
         DriverCreation.logLevel = LogLevel.None;
         client = new();

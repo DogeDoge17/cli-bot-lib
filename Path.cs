@@ -78,6 +78,11 @@ namespace cli_bot
             }
         }
 
+        public bool Contains(string path)
+        {
+            return _path.Contains(path);
+        }
+
         public Path RelativeTo(Path basePath)
         {
             Uri baseUri = new Uri(basePath._path.EndsWith(GoodSep)
