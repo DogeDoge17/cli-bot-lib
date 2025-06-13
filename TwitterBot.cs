@@ -3,30 +3,30 @@ using Quill.Pages;
 
 namespace cli_bot;
 
-public class TwitterBot
+public class TwitterBot(double intervalS)
 {
-    public delegate void RunBot(ComposePage composer, string[] args);
-    public delegate void PreRun(string[] args);
+    public delegate void RunBot(ComposePage composer, string[]? args);
+    public delegate void PreRun(string[]? args);
 
-    public event RunBot runAction;
-    public event PreRun preAction;
+    public event RunBot? RunAction;
+    public event PreRun? PreAction;
 
-    public double timer;
+    public double timer = 0;
 
-    public double interval;
+    public double interval = intervalS;
 
     public int timeout = 250;
 
     public float Progress { get { return 1 - (float)(timer / interval); } }
 
-    public string DisplayName { get; set; }
+    public string DisplayName { get; set; } = string.Empty;
 
     public bool CustomTimer { get; set; }
 
-    private ComposePage _page;
-    public TwitterClient client;
+    private ComposePage? _page;
+    public TwitterClient? client;
 
-    internal Thread _runThread;
+    internal Thread? _runThread;
 
     internal byte _loginState;
     internal DateTime _loginStart;
@@ -36,9 +36,7 @@ public class TwitterBot
 
     public TwitterBot(TimeSpan interval) : this(interval.TotalSeconds) { }
 
-    public TwitterBot(double intervalS) => interval = intervalS;
-
-    public void ShutDown() => client.Close();
+    public void ShutDown() => client?.Close();
 
     public void Start(string[]? argv = null)
     {
@@ -47,7 +45,7 @@ public class TwitterBot
         _loginStart = DateTimeOffset.UtcNow.LocalDateTime;
         double deltaTime = 0.0f;
 
-        string[] creds = null;
+        string[]? creds = null;
         if (File.Exists(Path.Assembly / "login.txt"))
             creds = File.ReadAllLines(Path.Assembly / "login.txt").Select(str => str.Trim()).ToArray();
         else
@@ -65,7 +63,7 @@ public class TwitterBot
         {
             _loginState = 1;
             Output.WriteLine("Beginning login");
-            client.Login(creds[0], "", creds[1]);
+            _ = client.Login(creds[0], "", creds[1]);
             Output.WriteLine($"Logged in as {creds[0]}");
             _loginState = 2;
             Output.WriteLine("Creating compose page");
@@ -96,8 +94,8 @@ public class TwitterBot
                 try
                 {
                     //purposefully not multithreaded as preactions should be efficient 
-                    if (preAction != null)
-                        preAction.Invoke(argv);
+                    
+                    PreAction?.Invoke(argv);
                 }
                 catch (Exception e)
                 {
@@ -108,8 +106,12 @@ public class TwitterBot
                 {
                     try
                     {
-                        if (runAction != null)
-                            runAction.Invoke(_page, argv);
+                        if (RunAction is not null)
+                        {
+                            while (_page is null) Thread.Sleep(1000);
+
+                            RunAction.Invoke(_page, argv);
+                        }
                         Console.Clear();
                     }
                     catch (Exception e)

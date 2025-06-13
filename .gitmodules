@@ -10,3 +10,7 @@
 [submodule "bots/nino"]
 	path = bots/nino
 	url = https://github.com/DogeDoge17/nino-ss-bot.git
+[submodule "Quill"]
+	path = Quill
+	url = https://github.com/Doge-Productions/Quill.api.git
+	branch = experimental

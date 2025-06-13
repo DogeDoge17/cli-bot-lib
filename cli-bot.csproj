@@ -9,14 +9,18 @@
 
   <ItemGroup>
     <Compile Remove="bots\**" />
+    <Compile Remove="Quill\**" />
     <EmbeddedResource Remove="bots\**" />
+    <EmbeddedResource Remove="Quill\**" />
     <None Remove="bots\**" />
+    <None Remove="Quill\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Quill.dll" />
   </ItemGroup>
 
+  
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -25,10 +29,11 @@
     <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.6" />
   </ItemGroup>
 
+  
   <ItemGroup>
-    <Reference Include="Quill">
-      <HintPath>Quill.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="Quill\dotnet\Quill.csproj" />
   </ItemGroup>
+
+
 
 </Project>

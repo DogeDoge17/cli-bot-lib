@@ -41,23 +41,23 @@ namespace cli_bot
         {
             return _path;
         }
-        public Path ParentPath
+        public Path? ParentPath
         {
             get
             {
-                string parent = GetDirectoryName(_path);
+                string? parent = GetDirectoryName(_path);
                 return parent != null ? new Path(parent) : null;
             }
         }
 
-        public Path DirectoryPath
+        public Path? DirectoryPath
         {
             get
             {
                 if (Extension == string.Empty)
                     return new(_path);
 
-                string parent = GetDirectoryName(_path);
+                string? parent = GetDirectoryName(_path);
                 return parent != null ? new Path(parent) : null;
             }
         }
@@ -96,7 +96,7 @@ namespace cli_bot
 
         public string FileName => GetFileName(_path);
 
-        public static string GetDirectoryName(string path)
+        public static string? GetDirectoryName(string path)
         {
             if (string.IsNullOrEmpty(path))
             {

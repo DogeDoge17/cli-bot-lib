@@ -16,8 +16,7 @@ namespace cli_bot
         private static readonly System.Threading.Lock _consoleLock = new();
 
         public static ConsoleColor Background { get { return Console.BackgroundColor; } set { Console.BackgroundColor = value; } }
-        public static ConsoleColor Foreground { get { return Console.ForegroundColor; } set { Console.ForegroundColor = value; } }
-        
+        public static ConsoleColor Foreground { get { return Console.ForegroundColor; } set { Console.ForegroundColor = value; } }        
 
         public static void Draw(TwitterBot bot)
         {
@@ -37,8 +36,6 @@ namespace cli_bot
                 CoutL(new string(' ', (Console.WindowWidth - fancy.Length) / 2) + fancy);
                 ClearLine();
                 CoutL();
-
-
 
                 if (bot._loginState < 3)
                 {
