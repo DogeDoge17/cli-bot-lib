@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace cli_bot
+﻿namespace cli_bot
 {
     public class Path
     {
@@ -16,7 +9,7 @@ namespace cli_bot
 
         public Path(string path)
         {
-            if(GoodSep != '/')
+            if (GoodSep != '/')
                 _path = path.Replace(BadSep, GoodSep).TrimStart('\\', '/').TrimEnd('\\', '/');
             else
                 _path = path.Replace(BadSep, GoodSep).TrimEnd('\\', '/');
@@ -34,7 +27,7 @@ namespace cli_bot
 
         public static Path operator /(Path left, Path right)
         {
-            return new Path((left._path.TrimEnd('\\', '/') + GoodSep + right._path.TrimStart('\\', '/')).Replace(BadSep, GoodSep));        
+            return new Path((left._path.TrimEnd('\\', '/') + GoodSep + right._path.TrimStart('\\', '/')).Replace(BadSep, GoodSep));
         }
 
         public override string ToString()
