@@ -6,7 +6,7 @@
 	url = https://github.com/DogeDoge17/hourlynatsuki.git
 [submodule "bots/adachireaction"]
 	path = bots/adachireaction
-	url = git@github.com:https://github.com/DogeDoge17/adachireaction.git
+	url = https://github.com/DogeDoge17/adachireaction.git
 [submodule "bots/nino"]
 	path = bots/nino
 	url = https://github.com/DogeDoge17/nino-ss-bot.git
