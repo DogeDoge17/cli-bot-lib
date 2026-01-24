@@ -1,5 +1,18 @@
 # cli-bot-lib
  a helper library to create twitter bots using quill
+# Usage
+```csharp
+using cli_bot;
+using Quill;
+using Quill.Pages;
+
+TwitterBot myBot = new(TimeSpan.FromMinutes(60)) { DisplayName = "My Bot" };
+
+myBot.RunAction += Run;
+myBot.Start();
+
+void Run(ComposePage composer, string[] args) => composer.Tweet("Hello Twitter!");
+```
 # Examples
  You can find various examples of how to make and run bots in the [bots folder](https://github.com/DogeDoge17/cli-bot-lib/tree/main/bots)
 # Quill
